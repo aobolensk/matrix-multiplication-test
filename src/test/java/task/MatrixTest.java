@@ -64,17 +64,11 @@ public class MatrixTest {
 
     @Test
     public void canReadMatricesFromFile() {
-        double[][] a = Matrix.read("data/matrix1.txt");
-        double[][] b = Matrix.read("data/matrix2.txt");
-        double[][] expected = Matrix.read("data/matrix3.txt");
+        double[][] a = Matrix.read(getClass().getResource("/matrix1.txt").getFile());
+        double[][] b = Matrix.read(getClass().getResource("/matrix2.txt").getFile());
+        double[][] expected = Matrix.read(getClass().getResource("/matrix3.txt").getFile());
         double[][] answer = Matrix.multiply(a, b);
         Assertions.assertTrue(Arrays.deepEquals(expected, answer));
-    }
-
-    @Test
-    public void canHandleNonExistentFile() {
-        double[][] a = Matrix.read("data/matrix0.txt");
-        Assertions.assertTrue(Arrays.deepEquals(null, a));
     }
 
     @Test

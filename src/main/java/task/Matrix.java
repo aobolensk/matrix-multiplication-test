@@ -50,7 +50,10 @@ public class Matrix {
     }
 
     public static double[][] read(String filePath) {
-        File file = new File(filePath);
+        if (filePath == null) {
+            return null;
+        }
+        File file = new File(filePath.replaceAll("%20", " "));
         double[][] res = null;
         try {
             Scanner scn = new Scanner(file);
