@@ -7,6 +7,10 @@ import java.util.Scanner;
 
 public class Matrix {
     public static double[][] add(double[][] a, double[][] b) {
+        if ((a.length == 0) || (b.length == 0) ||
+            (a.length != b.length) || (a[0].length != b[0].length)) {
+            return null;
+        }
         double[][] c = new double[a.length][a[0].length];
         for (int row = 0; row < c.length; ++row) {
             for (int col = 0; col < c.length; ++col) {
@@ -17,6 +21,10 @@ public class Matrix {
     }
 
     public static double[][] subtract(double[][] a, double[][] b) {
+        if ((a.length == 0) || (b.length == 0) ||
+            (a.length != b.length) || (a[0].length != b[0].length)) {
+            return null;
+        }
         double[][] c = new double[a.length][a[0].length];
         for (int row = 0; row < c.length; ++row) {
             for (int col = 0; col < c.length; ++col) {
@@ -27,6 +35,9 @@ public class Matrix {
     }
 
     public static double[][] multiply(double[][] a, double[][] b) {
+        if ((a.length == 0) || (b.length == 0) || (a[0].length != b.length)) {
+            return null;
+        }
         double[][] c = new double[a.length][b[0].length];
         for (int row = 0; row < c.length; row++) {
             for (int col = 0; col < c[row].length; col++) {

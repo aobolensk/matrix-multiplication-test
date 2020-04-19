@@ -67,4 +67,37 @@ public class MatrixTest {
         double[][] answer = Matrix.multiply(a, b);
         Assert.assertTrue(Arrays.deepEquals(expected, answer));
     }
+
+    @Test
+    public void canHandleIncompatibleMatrixSizes() {
+        double[][] a = {
+            {1, 2},
+            {3, 4}
+        };
+        double[][] b = {
+            {1, 2, 3},
+            {3, 4, 5}
+        };
+        double[][] answerAdd = Matrix.add(a, b);
+        double[][] answerSub = Matrix.subtract(a, b);
+        double[][] answerMlp = Matrix.subtract(a, b);
+        Assert.assertTrue(Arrays.deepEquals(null, answerAdd));
+        Assert.assertTrue(Arrays.deepEquals(null, answerSub));
+        Assert.assertTrue(Arrays.deepEquals(null, answerMlp));
+    }
+
+    @Test
+    public void canHandleZeroSizedMatrix() {
+        double[][] a = {
+            {1, 2},
+            {3, 4}
+        };
+        double[][] b = {};
+        double[][] answerAdd = Matrix.add(a, b);
+        double[][] answerSub = Matrix.subtract(a, b);
+        double[][] answerMlp = Matrix.subtract(a, b);
+        Assert.assertTrue(Arrays.deepEquals(null, answerAdd));
+        Assert.assertTrue(Arrays.deepEquals(null, answerSub));
+        Assert.assertTrue(Arrays.deepEquals(null, answerMlp));
+    }
 }
