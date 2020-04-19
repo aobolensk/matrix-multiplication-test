@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class MatrixTest {
     @Test
@@ -112,5 +114,36 @@ public class MatrixTest {
         Assertions.assertTrue(Arrays.deepEquals(null, answerAdd));
         Assertions.assertTrue(Arrays.deepEquals(null, answerSub));
         Assertions.assertTrue(Arrays.deepEquals(null, answerMlp));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "1,+,2.23", "1,-,2.23", "1,*,2.23",
+        "3.45,+,4.12", "3.45,-,4.12", "3.45,*,4.12",
+        "5,*,-6", "-5,*,6", "-5,*,6",
+        "0,*,2", "2,*,0", "0,*,0"
+    })
+    void operationsWith1x1MatricesAreTheSameAsForNumbers(String x, String op, String y) {
+        double[][] a = {{Double.parseDouble(x)}};
+        double[][] b = {{Double.parseDouble(y)}};
+        double[][] expected = a;
+        double[][] answer = null;
+        switch (op) {
+        case "+":
+            answer = Matrix.add(a, b);
+            expected[0][0] += b[0][0];
+            break;
+        case "-":
+            answer = Matrix.subtract(a, b);
+            expected[0][0] -= b[0][0];
+            break;
+        case "*":
+            answer = Matrix.multiply(a, b);
+            expected[0][0] *= b[0][0];
+            break;
+        default:
+            Assertions.assertTrue(false);
+        }
+        Assertions.assertTrue(Arrays.deepEquals(expected, answer));
     }
 }
