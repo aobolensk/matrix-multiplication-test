@@ -58,4 +58,13 @@ public class MatrixTest {
         double[][] answer = Matrix.subtract(a, b);
         Assert.assertTrue(Arrays.deepEquals(expected, answer));
     }
+
+    @Test
+    public void canReadMatricesFromFile() {
+        double[][] a = Matrix.read("data/matrix1.txt");
+        double[][] b = Matrix.read("data/matrix2.txt");
+        double[][] expected = Matrix.read("data/matrix3.txt");
+        double[][] answer = Matrix.multiply(a, b);
+        Assert.assertTrue(Arrays.deepEquals(expected, answer));
+    }
 }

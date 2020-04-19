@@ -1,5 +1,10 @@
 package task;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Matrix {
     public static double[][] add(double[][] a, double[][] b) {
         double[][] c = new double[a.length][a[0].length];
@@ -31,6 +36,30 @@ public class Matrix {
             }
         }
         return c;
+    }
+
+    public static double[][] read(String filePath) {
+        File file = new File(filePath);
+        double[][] res = null;
+        try {
+            Scanner scn = new Scanner(file);
+            int rows = scn.nextInt();
+            int cols = scn.nextInt();
+            res = new double[rows][cols];
+            for (int row = 0; row < rows; ++row) {
+                for (int col = 0; col < cols; ++col) {
+                    res[row][col] = scn.nextDouble();
+                }
+            }
+            scn.close();
+        } catch (FileNotFoundException e) {
+            res = null;
+            e.printStackTrace();
+        } catch (InputMismatchException e) {
+            res = null;
+            e.printStackTrace();
+        }
+        return res;
     }
 
     public static void print(double[][] a) {
