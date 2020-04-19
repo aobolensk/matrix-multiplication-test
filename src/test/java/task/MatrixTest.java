@@ -1,8 +1,9 @@
 package task;
 
 import java.util.Arrays;
-import org.junit.Test;
-import org.junit.Assert;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class MatrixTest {
     @Test
@@ -20,7 +21,7 @@ public class MatrixTest {
             {15, 22}
         };
         double[][] answer = Matrix.multiply(a, b);
-        Assert.assertTrue(Arrays.deepEquals(expected, answer));
+        Assertions.assertTrue(Arrays.deepEquals(expected, answer));
     }
 
     @Test
@@ -38,7 +39,7 @@ public class MatrixTest {
             {6, 8}
         };
         double[][] answer = Matrix.add(a, b);
-        Assert.assertTrue(Arrays.deepEquals(expected, answer));
+        Assertions.assertTrue(Arrays.deepEquals(expected, answer));
     }
 
     @Test
@@ -56,7 +57,7 @@ public class MatrixTest {
             {0, 0}
         };
         double[][] answer = Matrix.subtract(a, b);
-        Assert.assertTrue(Arrays.deepEquals(expected, answer));
+        Assertions.assertTrue(Arrays.deepEquals(expected, answer));
     }
 
     @Test
@@ -65,19 +66,19 @@ public class MatrixTest {
         double[][] b = Matrix.read("data/matrix2.txt");
         double[][] expected = Matrix.read("data/matrix3.txt");
         double[][] answer = Matrix.multiply(a, b);
-        Assert.assertTrue(Arrays.deepEquals(expected, answer));
+        Assertions.assertTrue(Arrays.deepEquals(expected, answer));
     }
 
     @Test
     public void canHandleNonExistentFile() {
         double[][] a = Matrix.read("data/matrix0.txt");
-        Assert.assertTrue(Arrays.deepEquals(null, a));
+        Assertions.assertTrue(Arrays.deepEquals(null, a));
     }
 
     @Test
     public void canHandleIncorrectFileFormat() {
         double[][] a = Matrix.read("data/incorrect.txt");
-        Assert.assertTrue(Arrays.deepEquals(null, a));
+        Assertions.assertTrue(Arrays.deepEquals(null, a));
     }
 
     @Test
@@ -93,9 +94,9 @@ public class MatrixTest {
         double[][] answerAdd = Matrix.add(a, b);
         double[][] answerSub = Matrix.subtract(a, b);
         double[][] answerMlp = Matrix.subtract(a, b);
-        Assert.assertTrue(Arrays.deepEquals(null, answerAdd));
-        Assert.assertTrue(Arrays.deepEquals(null, answerSub));
-        Assert.assertTrue(Arrays.deepEquals(null, answerMlp));
+        Assertions.assertTrue(Arrays.deepEquals(null, answerAdd));
+        Assertions.assertTrue(Arrays.deepEquals(null, answerSub));
+        Assertions.assertTrue(Arrays.deepEquals(null, answerMlp));
     }
 
     @Test
@@ -108,8 +109,8 @@ public class MatrixTest {
         double[][] answerAdd = Matrix.add(a, b);
         double[][] answerSub = Matrix.subtract(a, b);
         double[][] answerMlp = Matrix.subtract(a, b);
-        Assert.assertTrue(Arrays.deepEquals(null, answerAdd));
-        Assert.assertTrue(Arrays.deepEquals(null, answerSub));
-        Assert.assertTrue(Arrays.deepEquals(null, answerMlp));
+        Assertions.assertTrue(Arrays.deepEquals(null, answerAdd));
+        Assertions.assertTrue(Arrays.deepEquals(null, answerSub));
+        Assertions.assertTrue(Arrays.deepEquals(null, answerMlp));
     }
 }
