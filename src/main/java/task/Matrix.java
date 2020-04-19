@@ -65,10 +65,8 @@ public class Matrix {
             scn.close();
         } catch (FileNotFoundException e) {
             res = null;
-            e.printStackTrace();
         } catch (InputMismatchException e) {
             res = null;
-            e.printStackTrace();
         }
         return res;
     }
