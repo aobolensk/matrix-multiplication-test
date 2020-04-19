@@ -96,6 +96,78 @@ public class MatrixTest {
     }
 
     @Test
+    public void canMultiplyMatrixToItselfTransposed() {
+        double[][] a = {
+            {1, 4},
+            {2, 5},
+            {3, 6}
+        };
+        double[][] b = {
+            {1, 2, 3},
+            {4, 5, 6}
+        };
+        double[][] expected = {
+            {17, 22, 27},
+            {22, 29, 36},
+            {27, 36, 45}
+        };
+        double[][] answer = Matrix.multiply(a, b);
+        Assertions.assertTrue(Arrays.deepEquals(expected, answer));
+    }
+
+    public void canMultiplyMatrixToItselfTransposed_Reversed() {
+        double[][] a = {
+            {1, 4},
+            {2, 5},
+            {3, 6}
+        };
+        double[][] b = {
+            {1, 2, 3},
+            {4, 5, 6}
+        };
+        double[][] expected = {
+            {14, 32},
+            {32, 77}
+        };
+        double[][] answer = Matrix.multiply(b, a);
+        Assertions.assertTrue(Arrays.deepEquals(expected, answer));
+    }
+
+    public void multiplicationWithIdentityMatrixGivesMatrixItself() {
+        double[][] a = {
+            {1, 2, 3, 4},
+            {2, 3, 4, 5},
+            {.3, .7, 8.4, 13.2},
+            {9.45, 4.32, 21, 45.2}
+        };
+        double[][] b = {
+            {1, 0, 0, 0},
+            {0, 1, 0, 0},
+            {0, 0, 1, 0},
+            {0, 0, 0, 1}
+        };
+        double[][] answer = Matrix.multiply(a, b);
+        Assertions.assertTrue(Arrays.deepEquals(a, answer));
+    }
+
+    public void multiplicationWithIdentityMatrixGivesMatrixItself_Reversed() {
+        double[][] a = {
+            {1, 2, 3, 4},
+            {2, 3, 4, 5},
+            {.3, .7, 8.4, 13.2},
+            {9.45, 4.32, 21, 45.2}
+        };
+        double[][] b = {
+            {1, 0, 0, 0},
+            {0, 1, 0, 0},
+            {0, 0, 1, 0},
+            {0, 0, 0, 1}
+        };
+        double[][] answer = Matrix.multiply(b, a);
+        Assertions.assertTrue(Arrays.deepEquals(a, answer));
+    }
+
+    @Test
     public void canHandleZeroSizedMatrix() {
         double[][] a = {
             {1, 2},
