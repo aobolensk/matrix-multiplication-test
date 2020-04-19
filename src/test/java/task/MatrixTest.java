@@ -69,6 +69,18 @@ public class MatrixTest {
     }
 
     @Test
+    public void canHandleNonExistentFile() {
+        double[][] a = Matrix.read("data/matrix0.txt");
+        Assert.assertTrue(Arrays.deepEquals(null, a));
+    }
+
+    @Test
+    public void canHandleIncorrectFileFormat() {
+        double[][] a = Matrix.read("data/incorrect.txt");
+        Assert.assertTrue(Arrays.deepEquals(null, a));
+    }
+
+    @Test
     public void canHandleIncompatibleMatrixSizes() {
         double[][] a = {
             {1, 2},
