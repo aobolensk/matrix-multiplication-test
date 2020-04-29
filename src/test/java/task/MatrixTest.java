@@ -115,6 +115,7 @@ public class MatrixTest {
         Assertions.assertTrue(Arrays.deepEquals(expected, answer));
     }
 
+    @Test
     public void canMultiplyMatrixToItselfTransposed_Reversed() {
         double[][] a = {
             {1, 4},
@@ -133,6 +134,7 @@ public class MatrixTest {
         Assertions.assertTrue(Arrays.deepEquals(expected, answer));
     }
 
+    @Test
     public void multiplicationWithIdentityMatrixGivesMatrixItself() {
         double[][] a = {
             {1, 2, 3, 4},
@@ -150,6 +152,7 @@ public class MatrixTest {
         Assertions.assertTrue(Arrays.deepEquals(a, answer));
     }
 
+    @Test
     public void multiplicationWithIdentityMatrixGivesMatrixItself_Reversed() {
         double[][] a = {
             {1, 2, 3, 4},
